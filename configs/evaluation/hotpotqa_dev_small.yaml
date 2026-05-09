@@ -1,0 +1,10 @@
+dataset:
+  name: hotpotqa
+  prepared_path: data/processed/hotpotqa_dev_small.jsonl
+  limit: 200
+variants:
+  - bm25_only
+  - bm25_graph
+  - bm25_graph_callbacks
+output:
+  dir: data/outputs

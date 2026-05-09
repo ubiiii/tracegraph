@@ -1,0 +1,12 @@
+retrieval:
+  use_bm25: true
+  use_entities: true
+  use_embeddings: false
+graph:
+  enabled: true
+traversal:
+  enabled: true
+  max_depth: 3
+  beam_width: 6
+callbacks:
+  enabled: false

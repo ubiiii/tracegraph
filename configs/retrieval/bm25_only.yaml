@@ -1,0 +1,10 @@
+retrieval:
+  use_bm25: true
+  use_entities: false
+  use_embeddings: false
+graph:
+  enabled: false
+traversal:
+  enabled: false
+callbacks:
+  enabled: false

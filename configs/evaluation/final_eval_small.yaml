@@ -1,0 +1,12 @@
+dataset:
+  name: demo
+  prepared_path: data/demo/demo_qa.jsonl
+  limit: 8
+variants:
+  - bm25_only
+  - bm25_graph
+  - bm25_graph_callbacks
+output:
+  dir: data/outputs
+notes:
+  objective: "Compact benchmark matrix for submission artifacts."

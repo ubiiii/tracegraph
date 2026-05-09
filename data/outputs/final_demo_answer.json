@@ -1,0 +1,133 @@
+{
+  "answer": {
+    "answer_text": "C-12",
+    "cited_answer_text": "C-12 [Source: Policy Manual, chunk 0] [Source: Decision Memo, chunk 0]",
+    "completeness_note": "best effort from retrieved evidence",
+    "confidence": 0.7,
+    "metadata": {
+      "context_nodes": [
+        "policy::c0",
+        "memo::c0",
+        "audit::c0",
+        "glossary::c0",
+        "sop::c0",
+        "appendix::c0"
+      ]
+    },
+    "question": "What decision did we make about data retention, and which compliance clause justified it?",
+    "retrieval_path_explanation": "Started at memo::c0, traversed via SHARED_ENTITY, reached policy::c0.\nStarted at policy::c0, traversed via SHARED_ENTITY, reached memo::c0.\nStarted at audit::c0, traversed via SHARED_ENTITY, reached glossary::c0.",
+    "sources": [
+      "[Source: Policy Manual, chunk 0]",
+      "[Source: Decision Memo, chunk 0]",
+      "[Source: Audit Note, chunk 0]",
+      "[Source: Glossary, chunk 0]",
+      "[Source: Implementation SOP, chunk 0]",
+      "[Source: Policy Appendix, chunk 0]"
+    ]
+  },
+  "callback_count": 2,
+  "diagnostics": {
+    "final_context_nodes": 6,
+    "seed_count": 4
+  },
+  "final_query_used": "What decision did we make about data retention, and which compliance clause justified it? compliance clause c-12 rp-17 audit confirms 24 months states kept",
+  "mode_used": "mock",
+  "overall_latency": 0.9835860829916783,
+  "question": "What decision did we make about data retention, and which compliance clause justified it?",
+  "step_traces": [
+    {
+      "draft_answer": "C-12",
+      "latency_seconds": 0.5965937079745345,
+      "missing_evidence_decision": {
+        "confidence": 0.7,
+        "missing_concepts": [
+          "compliance clause"
+        ],
+        "needs_callback": true,
+        "reason": "insufficient evidence breadth/facet coverage"
+      },
+      "query": "What decision did we make about data retention, and which compliance clause justified it?",
+      "refined_query": "What decision did we make about data retention, and which compliance clause justified it? compliance clause 24 months c-12 states kept rp-17 audit confirms",
+      "seeds": [
+        "audit::c0",
+        "memo::c0",
+        "appendix::c0",
+        "sop::c0"
+      ],
+      "step_number": 0,
+      "stop_reason": null,
+      "token_estimate": 80,
+      "traversal_nodes": [
+        "policy::c0",
+        "audit::c0",
+        "memo::c0",
+        "glossary::c0",
+        "appendix::c0",
+        "sop::c0"
+      ]
+    },
+    {
+      "draft_answer": "C-12",
+      "latency_seconds": 0.22551495902007446,
+      "missing_evidence_decision": {
+        "confidence": 0.7,
+        "missing_concepts": [
+          "compliance clause"
+        ],
+        "needs_callback": true,
+        "reason": "insufficient evidence breadth/facet coverage"
+      },
+      "query": "What decision did we make about data retention, and which compliance clause justified it? compliance clause 24 months c-12 states kept rp-17 audit confirms",
+      "refined_query": "What decision did we make about data retention, and which compliance clause justified it? compliance clause c-12 rp-17 audit confirms 24 months states kept",
+      "seeds": [
+        "audit::c0",
+        "policy::c0",
+        "memo::c0",
+        "appendix::c0"
+      ],
+      "step_number": 1,
+      "stop_reason": null,
+      "token_estimate": 80,
+      "traversal_nodes": [
+        "audit::c0",
+        "policy::c0",
+        "memo::c0",
+        "glossary::c0",
+        "sop::c0",
+        "appendix::c0"
+      ]
+    },
+    {
+      "draft_answer": "C-12",
+      "latency_seconds": 0.1611626249505207,
+      "missing_evidence_decision": {
+        "confidence": 0.7,
+        "missing_concepts": [
+          "compliance clause"
+        ],
+        "needs_callback": true,
+        "reason": "insufficient evidence breadth/facet coverage"
+      },
+      "query": "What decision did we make about data retention, and which compliance clause justified it? compliance clause c-12 rp-17 audit confirms 24 months states kept",
+      "refined_query": "What decision did we make about data retention, and which compliance clause justified it? compliance clause 24 months c-12 states kept committee decided rp-17",
+      "seeds": [
+        "audit::c0",
+        "policy::c0",
+        "memo::c0",
+        "appendix::c0"
+      ],
+      "step_number": 2,
+      "stop_reason": "max_callbacks_reached",
+      "token_estimate": 80,
+      "traversal_nodes": [
+        "policy::c0",
+        "memo::c0",
+        "audit::c0",
+        "glossary::c0",
+        "sop::c0",
+        "appendix::c0"
+      ]
+    }
+  ],
+  "token_estimates": 80
+}

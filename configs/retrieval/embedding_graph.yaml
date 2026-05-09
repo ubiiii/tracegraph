@@ -1,0 +1,12 @@
+retrieval:
+  use_bm25: true
+  use_entities: true
+  use_embeddings: true
+graph:
+  enabled: true
+traversal:
+  enabled: true
+callbacks:
+  enabled: true
+llm:
+  mode: mock

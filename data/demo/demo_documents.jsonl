@@ -1,0 +1,6 @@
+{"doc_id": "policy", "metadata": {}, "section_names": null, "source_path": null, "text": "Retention Policy RP-17 states logs are kept 24 months. Clause C-12 requires compliance justification.", "timestamp": null, "title": "Policy Manual"}
+{"doc_id": "appendix", "metadata": {}, "section_names": null, "source_path": null, "text": "Exception E-9 allows shorter retention only if legal hold is absent and compliance clause C-12 is satisfied.", "timestamp": null, "title": "Policy Appendix"}
+{"doc_id": "memo", "metadata": {}, "section_names": null, "source_path": null, "text": "The committee decided to keep logs for 24 months, justified by clause C-12 in RP-17.", "timestamp": null, "title": "Decision Memo"}
+{"doc_id": "sop", "metadata": {}, "section_names": null, "source_path": null, "text": "Engineering enforces a 24 month retention job. Deviations must cite clause C-12.", "timestamp": null, "title": "Implementation SOP"}
+{"doc_id": "glossary", "metadata": {}, "section_names": null, "source_path": null, "text": "RP-17 means retention policy. C-12 is the compliance clause used for justification.", "timestamp": null, "title": "Glossary"}
+{"doc_id": "audit", "metadata": {}, "section_names": null, "source_path": null, "text": "Audit confirms decision memo references policy RP-17 and clause C-12.", "timestamp": null, "title": "Audit Note"}

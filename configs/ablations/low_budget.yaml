@@ -1,0 +1,4 @@
+traversal:
+  max_depth: 1
+  beam_width: 3
+  max_nodes: 6

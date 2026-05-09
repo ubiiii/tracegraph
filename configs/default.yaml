@@ -1,0 +1,64 @@
+project:
+  name: tracegraph
+random_seed: 42
+paths:
+  demo_dir: data/demo
+  prepared_examples: data/processed/prepared_examples.jsonl
+  outputs_root: data/outputs
+  runs_dir: data/outputs/runs
+chunking:
+  chunk_size: 180
+  chunk_overlap: 40
+  preserve_paragraphs: true
+preprocessing:
+  normalize_text: true
+  use_summary: true
+entity_extraction:
+  enabled: true
+  min_entity_len: 2
+  allow_fallback_regex: true
+keyword_extraction:
+  top_k: 8
+retrieval:
+  use_bm25: true
+  use_entities: true
+  use_embeddings: false
+  bm25_weight: 0.6
+  entity_weight: 0.2
+  embedding_weight: 0.2
+  seed_top_k: 6
+graph:
+  enabled: true
+  edge_types: ["NEXT", "SHARED_ENTITY", "LEXICAL_SIM", "RELATION"]
+  next_weight: 0.8
+  shared_entity_min: 1
+  shared_entity_max_neighbors: 8
+  lexical_min_similarity: 0.2
+  lexical_max_neighbors: 5
+  relation_enabled: true
+traversal:
+  enabled: true
+  max_depth: 3
+  beam_width: 6
+  max_nodes: 12
+  relevance_weight: 0.5
+  edge_weight: 0.3
+  novelty_weight: 0.15
+  depth_penalty_weight: 0.05
+context:
+  max_tokens: 450
+  diversity_by_doc: true
+callbacks:
+  enabled: false
+  max_rounds: 2
+llm:
+  mode: mock
+  openai_model: gpt-4o-mini
+evaluation:
+  save_per_example: true
+  continue_on_error: true
+persistence:
+  reuse_artifacts: true
+  rebuild_on_mismatch: true
+  atomic_writes: true
+debug: false

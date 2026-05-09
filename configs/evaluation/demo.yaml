@@ -1,0 +1,11 @@
+dataset:
+  name: demo
+  prepared_path: data/demo/demo_qa.jsonl
+  corpus_path: data/demo/demo_documents.jsonl
+  limit: 10
+variants:
+  - bm25_only
+  - bm25_graph
+  - bm25_graph_callbacks
+output:
+  dir: data/outputs

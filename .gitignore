@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Data & run artifacts
+data/outputs/runs/
+data/cache/*.pkl
+
+# Logs
+*.log
+
+# Frontend (Next.js / Node)
+web/node_modules/
+web/.next/
+web/out/
+web/.turbo/
+web/dist/
+web/build/
+web/.env
+web/.env.local
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Misc
+.deps/
+.claude/

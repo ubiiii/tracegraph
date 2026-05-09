@@ -1,0 +1,24 @@
+retrieval:
+  use_bm25: true
+  use_entities: true
+  use_embeddings: false
+  seed_top_k: 4
+graph:
+  enabled: true
+  edge_types: ["NEXT", "SHARED_ENTITY", "LEXICAL_SIM", "RELATION"]
+traversal:
+  enabled: true
+  max_depth: 2
+  beam_width: 5
+  max_nodes: 10
+  relevance_weight: 0.5
+  edge_weight: 0.3
+  novelty_weight: 0.15
+  depth_penalty_weight: 0.05
+context:
+  max_tokens: 260
+callbacks:
+  enabled: true
+  max_rounds: 2
+llm:
+  mode: mock
