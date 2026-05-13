@@ -6,9 +6,9 @@ from tracegraph.data.models import Chunk, RetrievedNode
 
 
 def make_citation(chunk: Chunk) -> str:
-    """Format a single source citation."""
+    """Format a single source citation (title + stable node id; avoids repeated chunk-0 labels across docs)."""
     page = f", page {chunk.page_number}" if chunk.page_number is not None else ""
-    return f"[Source: {chunk.title}, chunk {chunk.chunk_id}{page}]"
+    return f"[Source: {chunk.title} · {chunk.node_id}{page}]"
 
 
 def render_source_list(nodes: list[RetrievedNode]) -> str:

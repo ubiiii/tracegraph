@@ -1,7 +1,7 @@
 {
   "answer": {
     "answer_text": "C-12",
-    "cited_answer_text": "C-12 [Source: Policy Manual, chunk 0] [Source: Decision Memo, chunk 0]",
+    "cited_answer_text": "C-12 [Source: Policy Manual · policy::c0] [Source: Decision Memo · memo::c0]",
     "completeness_note": "best effort from retrieved evidence",
     "confidence": 0.7,
     "metadata": {
@@ -17,12 +17,12 @@
     "question": "What decision did we make about data retention, and which compliance clause justified it?",
     "retrieval_path_explanation": "Started at memo::c0, traversed via SHARED_ENTITY, reached policy::c0.\nStarted at policy::c0, traversed via SHARED_ENTITY, reached memo::c0.\nStarted at audit::c0, traversed via SHARED_ENTITY, reached glossary::c0.",
     "sources": [
-      "[Source: Policy Manual, chunk 0]",
-      "[Source: Decision Memo, chunk 0]",
-      "[Source: Audit Note, chunk 0]",
-      "[Source: Glossary, chunk 0]",
-      "[Source: Implementation SOP, chunk 0]",
-      "[Source: Policy Appendix, chunk 0]"
+      "[Source: Policy Manual · policy::c0]",
+      "[Source: Decision Memo · memo::c0]",
+      "[Source: Audit Note · audit::c0]",
+      "[Source: Glossary · glossary::c0]",
+      "[Source: Implementation SOP · sop::c0]",
+      "[Source: Policy Appendix · appendix::c0]"
     ]
   },
   "callback_count": 2,

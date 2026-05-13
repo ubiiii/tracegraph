@@ -8,6 +8,7 @@ from tracegraph.data.models import AnswerOutput, RetrievalBundle
 from tracegraph.llm.prompts import draft_answer_prompt, final_answer_prompt
 from tracegraph.retrieval.citation import attach_inline_citations, render_source_list
 from tracegraph.retrieval.context_assembly import format_context_for_prompt
+from tracegraph.retrieval.path_explainer import collect_path_hops
 
 
 class AnswerSynthesizer:
@@ -82,6 +83,7 @@ class AnswerSynthesizer:
             cited_answer_text=cited,
             sources=render_source_list(context_bundle.assembled_context).splitlines(),
             retrieval_path_explanation=context_bundle.path_explanation,
+            retrieval_path_hops=collect_path_hops(context_bundle.traversal_results),
             completeness_note="best effort from retrieved evidence",
             confidence=0.7 if context_bundle.assembled_context else 0.2,
             metadata={"context_nodes": [n.node_id for n in context_bundle.assembled_context]},

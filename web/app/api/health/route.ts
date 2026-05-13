@@ -14,7 +14,7 @@ export async function GET() {
   };
 
   if (!checks.python_present) {
-    return NextResponse.json({ ok: false, ...checks, hint: "run `python3 -m venv .venv && .venv/bin/pip install -e .` from repo root" }, { status: 503 });
+    return NextResponse.json({ ok: false, ...checks, hint: "from repo root: create .venv, pip install -e .; Windows uses .venv\\Scripts\\python.exe (or set TRACEGRAPH_PYTHON)" }, { status: 503 });
   }
 
   // CLI sanity

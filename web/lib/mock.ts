@@ -109,13 +109,14 @@ export const graphEdges: GraphEdge[] = [
 
 export const demoRun: RunResult = {
   question:
-    "What decision did we make about data retention, and which compliance clause justified it?",
+    "What retention decision was made for operational logs, and which compliance clause justified deviations?",
   answer: {
     question:
-      "What decision did we make about data retention, and which compliance clause justified it?",
-    answer_text: "Logs were retained for 24 months, justified by clause C-12.",
+      "What retention decision was made for operational logs, and which compliance clause justified deviations?",
+    answer_text:
+      "Operational logs are retained for 24 months by default, and deviations are justified under C-12.",
     cited_answer_text:
-      "Logs were retained for 24 months, justified by clause C-12 [Source: Policy Manual, chunk 0] [Source: Decision Memo, chunk 0].",
+      "Operational logs are retained for 24 months by default, and deviations are justified under C-12 [Source: Policy Manual · policy::c0] [Source: Decision Memo · memo::c0].",
     completeness_note: "best effort from retrieved evidence",
     confidence: 0.7,
     metadata: {
@@ -129,29 +130,37 @@ export const demoRun: RunResult = {
       ],
     },
     retrieval_path_explanation:
-      "Started at memo::c0, traversed via SHARED_ENTITY, reached policy::c0.\nStarted at policy::c0, traversed via SHARED_ENTITY, reached memo::c0.\nStarted at audit::c0, traversed via SHARED_ENTITY, reached glossary::c0.",
+      "Started at memo::c0, traversed via SHARED_ENTITY (C-12, RP-17) -> SHARED_ENTITY (E-9, legal hold), reached policy::c0.\nStarted at policy::c0, traversed via SHARED_ENTITY (C-12, retention), reached memo::c0.\nStarted at audit::c0, traversed via SHARED_ENTITY (C-12, audit), reached glossary::c0.",
+    retrieval_path_hops: [
+      [
+        "SHARED_ENTITY (C-12, RP-17)",
+        "SHARED_ENTITY (E-9, legal hold)",
+      ],
+      ["SHARED_ENTITY (C-12, retention)"],
+      ["SHARED_ENTITY (C-12, audit)"],
+    ],
     sources: [
-      "[Source: Policy Manual, chunk 0]",
-      "[Source: Decision Memo, chunk 0]",
-      "[Source: Audit Note, chunk 0]",
-      "[Source: Glossary, chunk 0]",
-      "[Source: Implementation SOP, chunk 0]",
-      "[Source: Policy Appendix, chunk 0]",
+      "[Source: Policy Manual · policy::c0]",
+      "[Source: Decision Memo · memo::c0]",
+      "[Source: Audit Note · audit::c0]",
+      "[Source: Glossary · glossary::c0]",
+      "[Source: Implementation SOP · sop::c0]",
+      "[Source: Policy Appendix · appendix::c0]",
     ],
   },
   callback_count: 2,
   diagnostics: { final_context_nodes: 6, seed_count: 4 },
   final_query_used:
-    "What decision did we make about data retention, and which compliance clause justified it? compliance clause c-12 rp-17 audit confirms 24 months states kept",
+    "What retention decision was made for operational logs, and which compliance clause justified deviations? compliance clause c-12 rp-17 audit confirms 24 months states kept",
   mode_used: "mock",
   overall_latency: 0.984,
   step_traces: [
     {
       step_number: 0,
       query:
-        "What decision did we make about data retention, and which compliance clause justified it?",
+        "What retention decision was made for operational logs, and which compliance clause justified deviations?",
       refined_query:
-        "What decision did we make about data retention, and which compliance clause justified it? compliance clause 24 months c-12 states kept rp-17 audit confirms",
+        "What retention decision was made for operational logs, and which compliance clause justified deviations? compliance clause 24 months c-12 states kept rp-17 audit confirms",
       seeds: ["audit::c0", "memo::c0", "appendix::c0", "sop::c0"],
       traversal_nodes: [
         "policy::c0",
@@ -175,9 +184,9 @@ export const demoRun: RunResult = {
     {
       step_number: 1,
       query:
-        "What decision did we make about data retention, and which compliance clause justified it? compliance clause 24 months c-12 states kept rp-17 audit confirms",
+        "What retention decision was made for operational logs, and which compliance clause justified deviations? compliance clause 24 months c-12 states kept rp-17 audit confirms",
       refined_query:
-        "What decision did we make about data retention, and which compliance clause justified it? compliance clause c-12 rp-17 audit confirms 24 months states kept",
+        "What retention decision was made for operational logs, and which compliance clause justified deviations? compliance clause c-12 rp-17 audit confirms 24 months states kept",
       seeds: ["audit::c0", "policy::c0", "memo::c0", "appendix::c0"],
       traversal_nodes: [
         "audit::c0",
@@ -187,7 +196,8 @@ export const demoRun: RunResult = {
         "sop::c0",
         "appendix::c0",
       ],
-      draft_answer: "Logs were retained for 24 months, justified by clause C-12.",
+      draft_answer:
+        "Operational logs are retained for 24 months by default, and deviations are justified under C-12.",
       token_estimate: 88,
       latency_seconds: 0.226,
       missing_evidence_decision: {
@@ -244,7 +254,7 @@ export const metricsTable: MetricRow[] = [
 // ---- Curated example questions --------------------------------------------
 
 export const exampleQuestions = [
-  "What decision did we make about data retention, and which compliance clause justified it?",
+  "What retention decision was made for operational logs, and which compliance clause justified deviations?",
   "Which procedure governs the 24-month retention rule, and what exceptions are listed?",
   "Who must approve a retention extension beyond the default, and under which clause?",
   "When was the retention exception filed, and where is it logged?",

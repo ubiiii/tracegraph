@@ -3,6 +3,9 @@
 TraceGraph is a graph-based retrieval and revisitable-agent system for multi-hop long-context reasoning.  
 Instead of relying only on flat top-k retrieval, it builds a sparse chunk graph and traverses evidence paths to answer questions with citations and path explanations.
 
+
+**Demo video:** https://youtu.be/FoJrKoV63C0
+
 ## Motivation
 
 Flat top-k retrieval often misses bridge evidence in multi-hop questions. TraceGraph addresses this by:

@@ -6,9 +6,15 @@ import os from "node:os";
 // Resolve TraceGraph repo root: web/ is one level inside it.
 export const REPO_ROOT = path.resolve(process.cwd(), "..");
 
+function defaultVenvPython(repoRoot: string): string {
+  if (process.platform === "win32") {
+    return path.join(repoRoot, ".venv", "Scripts", "python.exe");
+  }
+  return path.join(repoRoot, ".venv", "bin", "python");
+}
+
 export const PYTHON_BIN =
-  process.env.TRACEGRAPH_PYTHON ||
-  path.join(REPO_ROOT, ".venv", "bin", "python");
+  process.env.TRACEGRAPH_PYTHON || defaultVenvPython(REPO_ROOT);
 
 export interface RunOptions {
   args: string[];

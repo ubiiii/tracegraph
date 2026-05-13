@@ -10,7 +10,9 @@ def test_shared_entity_edges(sample_chunks):
     sample_chunks[0].entities = ["alice"]
     sample_chunks[-1].entities = ["alice"]
     edges = build_shared_entity_edges(sample_chunks, min_shared=1)
-    assert any(e["edge_type"] == "SHARED_ENTITY" for e in edges) or edges == []
+    shared = [e for e in edges if e["edge_type"] == "SHARED_ENTITY"]
+    assert shared
+    assert "alice" in shared[0]["metadata"]["shared_entities"]
 
 
 def test_lexical_edges(sample_chunks):

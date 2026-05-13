@@ -56,6 +56,7 @@ class TraversalPath(BaseModel):
     end_node_id: str
     node_sequence: list[str]
     edge_sequence: list[str]
+    hop_descriptions: list[str] = Field(default_factory=list)
     cumulative_score: float
     depth: int
 
@@ -105,6 +106,7 @@ class AnswerOutput(BaseModel):
     cited_answer_text: str
     sources: list[str] = Field(default_factory=list)
     retrieval_path_explanation: str = ""
+    retrieval_path_hops: list[list[str]] = Field(default_factory=list)
     completeness_note: str = ""
     confidence: float = 0.0
     metadata: dict[str, Any] = Field(default_factory=dict)

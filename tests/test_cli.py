@@ -2,6 +2,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from tracegraph.data.dataset_demo import build_demo_qa
+
 
 def run_cli(args, cwd):
     return subprocess.run([sys.executable, "-m", "tracegraph.cli", *args], cwd=cwd, capture_output=True, text=True)
@@ -25,7 +27,7 @@ def test_retrieve_and_answer(tmp_path):
         [
             "retrieve",
             "--question",
-            "What decision did we make about data retention, and which compliance clause justified it?",
+            build_demo_qa()[0].question,
         ],
         repo,
     )

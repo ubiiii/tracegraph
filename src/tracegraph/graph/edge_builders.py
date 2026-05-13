@@ -9,6 +9,22 @@ from tracegraph.graph.schema import EdgeType
 from tracegraph.indexing.lexical_similarity import build_lexical_similarity_edges
 
 
+def _shared_entity_display_names(a: Chunk, b: Chunk) -> list[str]:
+    """Stable display strings for entities shared between two chunks (case-insensitive match)."""
+    lower_to_canon: dict[str, str] = {}
+    for c in (a, b):
+        for e in c.entities:
+            e = (e or "").strip()
+            if not e:
+                continue
+            k = e.lower()
+            if k not in lower_to_canon:
+                lower_to_canon[k] = e
+    a_low = {e.lower() for e in a.entities if (e or "").strip()}
+    b_low = {e.lower() for e in b.entities if (e or "").strip()}
+    return [lower_to_canon[k] for k in sorted(a_low & b_low)]
+
+
 def build_next_edges(chunks: list[Chunk], weight: float = 0.8) -> list[dict]:
     """Link adjacent chunks in same document."""
     edges: list[dict] = []
@@ -46,7 +62,17 @@ def build_shared_entity_edges(chunks: list[Chunk], min_shared: int = 1, max_neig
         for tgt, cnt in ranked[:max_neighbors_per_node]:
             if cnt < min_shared:
                 continue
-            edges.append({"source": src, "target": tgt, "edge_type": EdgeType.SHARED_ENTITY.value, "weight": float(cnt), "metadata": {"shared_count": cnt}})
+            ca, cb = chunk_map[src], chunk_map[tgt]
+            shared_names = _shared_entity_display_names(ca, cb)
+            edges.append(
+                {
+                    "source": src,
+                    "target": tgt,
+                    "edge_type": EdgeType.SHARED_ENTITY.value,
+                    "weight": float(cnt),
+                    "metadata": {"shared_count": cnt, "shared_entities": shared_names},
+                }
+            )
     return edges
 
 

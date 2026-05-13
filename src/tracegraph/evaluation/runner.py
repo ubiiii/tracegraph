@@ -22,12 +22,17 @@ class EvaluationRunner:
     def _extract_titles_from_sources(sources: list[str]) -> list[str]:
         titles: list[str] = []
         for src in sources:
-            # Expected format: [Source: Title, chunk N]
+            # Formats: [Source: Title · node_id] or legacy [Source: Title, chunk N]
             marker = "Source:"
             if marker not in src:
                 continue
-            part = src.split(marker, 1)[1].strip()
-            title = part.split(", chunk", 1)[0].strip().strip("[]")
+            part = src.split(marker, 1)[1].strip().rstrip("]")
+            if " · " in part:
+                title = part.split(" · ", 1)[0].strip()
+            elif ", chunk" in part:
+                title = part.split(", chunk", 1)[0].strip()
+            else:
+                title = part.split(",", 1)[0].strip() if "," in part else part
             if title:
                 titles.append(title)
         return titles

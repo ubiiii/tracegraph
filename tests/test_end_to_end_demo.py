@@ -1,6 +1,6 @@
 from tracegraph.agent.tracegraph_agent import TraceGraphAgent
 from tracegraph.config.schema import TraceGraphConfig
-from tracegraph.data.dataset_demo import build_demo_documents
+from tracegraph.data.dataset_demo import build_demo_documents, build_demo_qa
 from tracegraph.graph.builder import TraceGraphBuilder
 from tracegraph.indexing.bm25_index import BM25Index
 from tracegraph.indexing.entity_index import EntityIndex
@@ -21,7 +21,7 @@ def test_end_to_end_demo():
     retriever = TraceGraphRetriever(SeedRetriever(bm25, ent))
     agent = TraceGraphAgent(retriever, MockLLM())
     result = agent.answer(
-        "What decision did we make about data retention, and which compliance clause justified it?",
+        build_demo_qa()[0].question,
         {"graph": graph, "chunks": chunks},
         cfg,
     )

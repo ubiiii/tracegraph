@@ -61,6 +61,8 @@ export interface AnswerOutput {
   confidence: number;
   question: string;
   retrieval_path_explanation: string;
+  /** One array per top path; each entry is one hop label (e.g. SHARED_ENTITY (C-12, …)). */
+  retrieval_path_hops?: string[][];
   sources: string[];
   metadata: { context_nodes: string[] };
 }

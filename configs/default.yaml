@@ -7,8 +7,9 @@ paths:
   outputs_root: data/outputs
   runs_dir: data/outputs/runs
 chunking:
-  chunk_size: 180
-  chunk_overlap: 40
+  # Smaller windows so multi-paragraph demo docs become several nodes (policy::c0, policy::c1, …).
+  chunk_size: 48
+  chunk_overlap: 12
   preserve_paragraphs: true
 preprocessing:
   normalize_text: true
